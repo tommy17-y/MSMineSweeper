@@ -46,7 +46,7 @@ const int margin = 10;
 
 - (void)tappedTile:(MSTile*)tile {
     
-    if (mineModeButton.layer.borderColor == [[UIColor redColor] CGColor]) {
+    if (mineModeButton.layer.borderColor == [[UIColor redColor] CGColor] && [tile getFlag] == NO) {
     
         if ([tile getMine] == NO) {
             [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
