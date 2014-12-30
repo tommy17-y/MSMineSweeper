@@ -20,6 +20,8 @@
         open = NO;
         flag = NO;
         
+        surroundingMineNum = 0;
+        
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
     }
@@ -38,6 +40,10 @@
     flag = x;
 }
 
+- (void)setSurroundingMineNum:(int)mineNum {
+    surroundingMineNum = mineNum;
+}
+
 - (BOOL)getMine {
     return mine;
 }
@@ -50,6 +56,9 @@
     return flag;
 }
 
+- (int)getSurroundingMineNum {
+    return surroundingMineNum;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
