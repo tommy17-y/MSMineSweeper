@@ -24,6 +24,7 @@ const int margin = 10;
     widthNum = 5;
     heightNum = 5;
     mineNum = 5;
+    openedTileNum = 0;
     
     tileImg = [UIImage imageNamed:@"masu.png"];
     mineImg = [UIImage imageNamed:@"mine.png"];
@@ -40,14 +41,20 @@ const int margin = 10;
     
     if ([tile getMine] == NO) {
         [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+        openedTileNum++;
+        
+        if (openedTileNum == widthNum * heightNum - mineNum) {
+            [self gameClear];
+        }
+        
     } else {
         [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
-        mineLabel.text = @"ゲームオーバー";
-        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self
-                                       selector:@selector(allOpen) userInfo:nil repeats:NO];
+        [self gameOver];
     }
     tile.userInteractionEnabled = NO;
 }
+
+
 
 #pragma mark - open
 
@@ -65,6 +72,18 @@ const int margin = 10;
         }
     }
 
+}
+
+#pragma mark - game end
+
+- (void)gameClear {
+    mineLabel.text = @"ゲームクリア！";
+}
+
+- (void)gameOver {
+    mineLabel.text = @"ゲームオーバー";
+    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self
+                                   selector:@selector(allOpen) userInfo:nil repeats:NO];
 }
 
 #pragma mark - initialize
@@ -117,6 +136,7 @@ const int margin = 10;
         MSTile *tile = (MSTile*)[base viewWithTag:rand];
         
         if ([tile getMine] != YES) {
+//            [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
             [tile setMine:YES];
             count++;
         }

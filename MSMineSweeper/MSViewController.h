@@ -22,6 +22,9 @@
     // 地雷数
     int mineNum;
     
+    // 開いたタイル数
+    int openedTileNum;
+    
     UIImage *tileImg;
     UIImage *mineImg;
     UIImage *flagImg;
