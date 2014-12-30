@@ -24,6 +24,7 @@ const int margin = 10;
     widthNum = 5;
     heightNum = 5;
     mineNum = 5;
+    leftMineNum = mineNum;
     openedTileNum = 0;
     
     tileImg = [UIImage imageNamed:@"masu.png"];
@@ -68,11 +69,17 @@ const int margin = 10;
     } else if (flagModeButton.layer.borderColor == [[UIColor redColor] CGColor]) {
         
         if ([tile getFlag] == NO) {
-            [tile setBackgroundImage:flagImg forState:UIControlStateNormal];
-            [tile setFlag:YES];
+            if (leftMineNum > 0) {
+                [tile setBackgroundImage:flagImg forState:UIControlStateNormal];
+                [tile setFlag:YES];
+                leftMineNum--;
+                mineLabel.text = [NSString stringWithFormat:@"残り地雷数：%d", leftMineNum];
+            }
         } else {
             [tile setBackgroundImage:tileImg forState:UIControlStateNormal];
             [tile setFlag:NO];
+            leftMineNum++;
+            mineLabel.text = [NSString stringWithFormat:@"残り地雷数：%d", leftMineNum];
         }
     }
 }
