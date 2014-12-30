@@ -45,6 +45,8 @@ const int margin = 10;
         
         if (openedTileNum == widthNum * heightNum - mineNum) {
             [self gameClear];
+        } else {
+            [self displayMineNum:(int)tile.tag];
         }
         
     } else {
@@ -58,14 +60,20 @@ const int margin = 10;
 
 #pragma mark - open
 
-- (void)allOpen {
+- (void)displayMineNum:(int)tileTag {
+    MSTile *tile = (MSTile*)[base viewWithTag:tileTag];
+    if ([tile getSurroundingMineNum] != 0){
+        [tile setTitle:[NSString stringWithFormat:@"%d", [tile getSurroundingMineNum]]
+              forState:UIControlStateNormal];
+    }
+}
+
+- (void)allMineTileOpen {
     
-    for (int i = 0; i < widthNum * heightNum; i++) {
-        MSTile *tile = (MSTile*)[base viewWithTag:i + 1];
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i];
         if (tile != nil) {
-            if ([tile getMine] == NO) {
-                [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
-            } else {
+            if ([tile getMine] == YES) {
                 [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
             }
             tile.userInteractionEnabled = NO;
@@ -83,7 +91,7 @@ const int margin = 10;
 - (void)gameOver {
     mineLabel.text = @"ゲームオーバー";
     [NSTimer scheduledTimerWithTimeInterval:0.5f target:self
-                                   selector:@selector(allOpen) userInfo:nil repeats:NO];
+                                   selector:@selector(allMineTileOpen) userInfo:nil repeats:NO];
 }
 
 #pragma mark - initialize
@@ -147,6 +155,90 @@ const int margin = 10;
     }
     
     mineLabel.text = [NSString stringWithFormat:@"残り地雷数：%d", mineNum];
+    
+    [self mineCount];
+}
+
+- (void)mineCount {
+    int count = 0;
+    MSTile *tile;
+
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        count = 0;
+        tile = (MSTile*)[base viewWithTag:i];
+        
+        if ([tile getMine] == NO) {
+        
+            // 最上段以外
+            if (i > widthNum) {
+                tile = (MSTile*)[base viewWithTag:i - widthNum];
+                if ([tile getMine] == YES) {
+                    count++;
+                }
+                
+                if (i % widthNum != 0) {
+                    tile = (MSTile*)[base viewWithTag:i - widthNum + 1];
+                    if ([tile getMine] == YES) {
+                        count++;
+                    }
+                }
+                
+                if (i % widthNum != 1) {
+                    tile = (MSTile*)[base viewWithTag:i - widthNum - 1];
+                    if ([tile getMine] == YES) {
+                        count++;
+                    }
+                }
+            }
+            
+            // 最下段以外
+            if (i <= (widthNum * (heightNum - 1))) {
+                tile = (MSTile*)[base viewWithTag:i + widthNum];
+                if ([tile getMine] == YES) {
+                    count++;
+                }
+                
+                if (i % widthNum != 0) {
+                    tile = (MSTile*)[base viewWithTag:i + widthNum + 1];
+                    if ([tile getMine] == YES) {
+                        count++;
+                    }
+                }
+                
+                if (i % widthNum != 1) {
+                    tile = (MSTile*)[base viewWithTag:i + widthNum - 1];
+                    if ([tile getMine] == YES) {
+                        count++;
+                    }
+                }
+                
+            }
+            
+            // 最右以外
+            if (i % widthNum != 0) {
+                tile = (MSTile*)[base viewWithTag:i + 1];
+                if ([tile getMine] == YES) {
+                    count++;
+                }
+            }
+            
+            // 最左以外
+            if (i % widthNum != 1) {
+                tile = (MSTile*)[base viewWithTag:i - 1];
+                if ([tile getMine] == YES) {
+                    count++;
+                }
+            }
+            
+            if (count != 0) {
+                tile = (MSTile*)[base viewWithTag:i];
+                [tile setSurroundingMineNum:count];
+//                [tile setTitle:[NSString stringWithFormat:@"%d", [tile getSurroundingMineNum]]
+//                      forState:UIControlStateNormal];
+            }
+        }
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

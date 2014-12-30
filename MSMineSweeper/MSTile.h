@@ -15,14 +15,18 @@
     BOOL open;
     // フラグが立っているかどうか
     BOOL flag;
+    // 周囲の地雷数
+    int surroundingMineNum;
 }
 
 - (void)setMine:(BOOL)x;
 - (void)setOpen:(BOOL)x;
 - (void)setFlag:(BOOL)x;
+- (void)setSurroundingMineNum:(int)mineNum;
 
 - (BOOL)getMine;
 - (BOOL)getOpen;
 - (BOOL)getFlag;
+- (int)getSurroundingMineNum;
 
 @end
