@@ -27,7 +27,10 @@
     UIImage *flagImg;
     UIImage *nothingImg;
     
-   IBOutlet UIView *base;
+    IBOutlet UIView *base;
+    
+    IBOutlet UILabel *mineLabel;
+    
 }
 
 @end

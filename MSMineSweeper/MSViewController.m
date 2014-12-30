@@ -34,6 +34,8 @@ const int margin = 10;
     
 }
 
+#pragma mark - initialize
+
 - (void)viewWillAppear:(BOOL)animated {
     width = (self.view.frame.size.width - margin * 2) / widthNum;
     height = width;
@@ -59,7 +61,7 @@ const int margin = 10;
 - (void)setTile {
     
     for (int i = 0; i < widthNum * heightNum; i++) {
-        UIButton *tile = (UIButton*)[base viewWithTag:i + 1];
+        MSTile *tile = (MSTile*)[base viewWithTag:i + 1];
         if (tile != nil) {
             tile.frame = CGRectMake(0 + (i % widthNum) * width,
                                     0 + (i / widthNum) * height,
@@ -69,6 +71,28 @@ const int margin = 10;
         }
     }
     
+    [self setMine];
+}
+
+- (void)setMine {
+    
+    int count = 0;
+    
+    for (;;) {
+        int rand = arc4random() % (widthNum * heightNum) + 1;
+        MSTile *tile = (MSTile*)[base viewWithTag:rand];
+        
+        if ([tile getMine] != YES) {
+            [tile setMine:YES];
+            count++;
+        }
+        
+        if (count >= mineNum) {
+            break;
+        }
+    }
+    
+    mineLabel.text = [NSString stringWithFormat:@"残り地雷数：%d", mineNum];
 }
 
 - (void)didReceiveMemoryWarning

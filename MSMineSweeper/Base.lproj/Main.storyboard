@@ -43,6 +43,7 @@
                     </view>
                     <connections>
                         <outlet property="base" destination="AhP-1X-e36" id="zmZ-0w-PSd"/>
+                        <outlet property="mineLabel" destination="6yT-Zy-9mg" id="hXQ-Iq-vvm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
