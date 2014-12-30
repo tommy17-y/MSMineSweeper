@@ -37,10 +37,35 @@ const int margin = 10;
 #pragma mark - gesture
 
 - (void)tappedTile:(MSTile*)tile {
-    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+    
+    if ([tile getMine] == NO) {
+        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+    } else {
+        [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
+        mineLabel.text = @"ゲームオーバー";
+        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self
+                                       selector:@selector(allOpen) userInfo:nil repeats:NO];
+    }
     tile.userInteractionEnabled = NO;
 }
 
+#pragma mark - open
+
+- (void)allOpen {
+    
+    for (int i = 0; i < widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i + 1];
+        if (tile != nil) {
+            if ([tile getMine] == NO) {
+                [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+            } else {
+                [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
+            }
+            tile.userInteractionEnabled = NO;
+        }
+    }
+
+}
 
 #pragma mark - initialize
 

@@ -26,7 +26,6 @@
 		B6C17F321A528D1D00357C80 /* masu.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2E1A528D1D00357C80 /* masu.png */; };
 		B6C17F331A528D1D00357C80 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2F1A528D1D00357C80 /* mine.png */; };
 		B6C17F351A528F4D00357C80 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F341A528F4D00357C80 /* appicon.png */; };
-		B6C17F371A52931000357C80 /* flag2.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F361A52931000357C80 /* flag2.png */; };
 		B6C17F3A1A52957700357C80 /* MSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F391A52957700357C80 /* MSTile.m */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		B6C17F2E1A528D1D00357C80 /* masu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = masu.png; sourceTree = "<group>"; };
 		B6C17F2F1A528D1D00357C80 /* mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine.png; sourceTree = "<group>"; };
 		B6C17F341A528F4D00357C80 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
-		B6C17F361A52931000357C80 /* flag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag2.png; sourceTree = "<group>"; };
 		B6C17F381A52957700357C80 /* MSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTile.h; sourceTree = "<group>"; };
 		B6C17F391A52957700357C80 /* MSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,7 +171,6 @@
 		B6C17F2B1A528D1000357C80 /* 素材 */ = {
 			isa = PBXGroup;
 			children = (
-				B6C17F361A52931000357C80 /* flag2.png */,
 				B6C17F341A528F4D00357C80 /* appicon.png */,
 				B6C17F2C1A528D1D00357C80 /* flag.png */,
 				B6C17F2D1A528D1D00357C80 /* nothing.png */,
@@ -263,7 +260,6 @@
 				B6C17F351A528F4D00357C80 /* appicon.png in Resources */,
 				B6C17F0F1A528CE100357C80 /* Images.xcassets in Resources */,
 				B6C17F301A528D1D00357C80 /* flag.png in Resources */,
-				B6C17F371A52931000357C80 /* flag2.png in Resources */,
 				B6C17F011A528CE100357C80 /* InfoPlist.strings in Resources */,
 				B6C17F311A528D1D00357C80 /* nothing.png in Resources */,
 				B6C17F331A528D1D00357C80 /* mine.png in Resources */,
