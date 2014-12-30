@@ -18,6 +18,9 @@
                                 <state key="normal" image="flag.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedFlagModeButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="I1B-Ha-ZXO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rad-Cq-NX1">
                                 <rect key="frame" x="20" y="20" width="35" height="35"/>
@@ -25,6 +28,9 @@
                                 <state key="normal" image="mine.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedMineModeButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ax0-I4-D7G"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り地雷数：150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6yT-Zy-9mg">
                                 <rect key="frame" x="115" y="20" width="195" height="35"/>
@@ -43,7 +49,9 @@
                     </view>
                     <connections>
                         <outlet property="base" destination="AhP-1X-e36" id="zmZ-0w-PSd"/>
+                        <outlet property="flagModeButton" destination="pkE-bZ-G9U" id="WyY-ys-CQb"/>
                         <outlet property="mineLabel" destination="6yT-Zy-9mg" id="hXQ-Iq-vvm"/>
+                        <outlet property="mineModeButton" destination="rad-Cq-NX1" id="U6L-aE-Brm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -31,6 +31,13 @@ const int margin = 10;
     flagImg = [UIImage imageNamed:@"flag.png"];
     nothingImg = [UIImage imageNamed:@"nothing.png"];
     
+    mineModeButton.layer.borderWidth = 2.0f;
+    mineModeButton.layer.borderColor = [[UIColor redColor] CGColor];
+    mineModeButton.layer.cornerRadius = 10.0f;
+    flagModeButton.layer.borderWidth = 2.0f;
+    flagModeButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    flagModeButton.layer.cornerRadius = 10.0f;
+    
     [self createTile];
     
 }
@@ -39,24 +46,46 @@ const int margin = 10;
 
 - (void)tappedTile:(MSTile*)tile {
     
-    if ([tile getMine] == NO) {
-        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
-        openedTileNum++;
-        
-        if (openedTileNum == widthNum * heightNum - mineNum) {
-            [self gameClear];
+    if (mineModeButton.layer.borderColor == [[UIColor redColor] CGColor]) {
+    
+        if ([tile getMine] == NO) {
+            [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+            openedTileNum++;
+            
+            if (openedTileNum == widthNum * heightNum - mineNum) {
+                [self gameClear];
+            } else {
+                [self displayMineNum:(int)tile.tag];
+            }
+            
         } else {
-            [self displayMineNum:(int)tile.tag];
+            [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
+            [self gameOver];
         }
+        tile.userInteractionEnabled = NO;
+        [tile setOpen:YES];
         
-    } else {
-        [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
-        [self gameOver];
+    } else if (flagModeButton.layer.borderColor == [[UIColor redColor] CGColor]) {
+        
+        if ([tile getFlag] == NO) {
+            [tile setBackgroundImage:flagImg forState:UIControlStateNormal];
+            [tile setFlag:YES];
+        } else {
+            [tile setBackgroundImage:tileImg forState:UIControlStateNormal];
+            [tile setFlag:NO];
+        }
     }
-    tile.userInteractionEnabled = NO;
 }
 
+- (IBAction)tappedMineModeButton {
+    mineModeButton.layer.borderColor = [[UIColor redColor] CGColor];
+    flagModeButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+}
 
+- (IBAction)tappedFlagModeButton {
+    mineModeButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    flagModeButton.layer.borderColor = [[UIColor redColor] CGColor];
+}
 
 #pragma mark - open
 

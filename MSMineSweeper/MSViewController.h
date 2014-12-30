@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MSTile.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSViewController : UIViewController {
     
@@ -34,6 +35,12 @@
     
     IBOutlet UILabel *mineLabel;
     
+    IBOutlet UIButton *mineModeButton;
+    IBOutlet UIButton *flagModeButton;
+    
 }
+
+- (IBAction)tappedMineModeButton;
+- (IBAction)tappedFlagModeButton;
 
 @end

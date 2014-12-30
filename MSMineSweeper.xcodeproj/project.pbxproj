@@ -27,6 +27,7 @@
 		B6C17F331A528D1D00357C80 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2F1A528D1D00357C80 /* mine.png */; };
 		B6C17F351A528F4D00357C80 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F341A528F4D00357C80 /* appicon.png */; };
 		B6C17F3A1A52957700357C80 /* MSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F391A52957700357C80 /* MSTile.m */; };
+		B6C17F3C1A52BA7200357C80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		B6C17F341A528F4D00357C80 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		B6C17F381A52957700357C80 /* MSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTile.h; sourceTree = "<group>"; };
 		B6C17F391A52957700357C80 /* MSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTile.m; sourceTree = "<group>"; };
+		B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C17F3C1A52BA7200357C80 /* QuartzCore.framework in Frameworks */,
 				B6C17EF91A528CE100357C80 /* CoreGraphics.framework in Frameworks */,
 				B6C17EFB1A528CE100357C80 /* UIKit.framework in Frameworks */,
 				B6C17EF71A528CE100357C80 /* Foundation.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		B6C17EF51A528CE100357C80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */,
 				B6C17EF61A528CE100357C80 /* Foundation.framework */,
 				B6C17EF81A528CE100357C80 /* CoreGraphics.framework */,
 				B6C17EFA1A528CE100357C80 /* UIKit.framework */,
@@ -495,6 +499,7 @@
 				B6C17F271A528CE200357C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6C17F281A528CE200357C80 /* Build configuration list for PBXNativeTarget "MSMineSweeperTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +508,7 @@
 				B6C17F2A1A528CE200357C80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
