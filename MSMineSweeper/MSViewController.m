@@ -34,6 +34,14 @@ const int margin = 10;
     
 }
 
+#pragma mark - gesture
+
+- (void)tappedTile:(MSTile*)tile {
+    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+    tile.userInteractionEnabled = NO;
+}
+
+
 #pragma mark - initialize
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,6 +60,7 @@ const int margin = 10;
     for (int i = 0; i < widthNum * heightNum; i++) {
         MSTile *tile = [[MSTile alloc] init];
         tile.tag = i + 1;
+        [tile addTarget:self action:@selector(tappedTile:) forControlEvents:UIControlEventTouchUpInside];
         
         [base addSubview:tile];
     }
