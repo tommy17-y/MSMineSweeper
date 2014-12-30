@@ -75,6 +75,9 @@ const int margin = 10;
                 leftMineNum--;
                 mineLabel.text = [NSString stringWithFormat:@"残り地雷数：%d", leftMineNum];
             }
+            if (leftMineNum == 0) {
+                [self checkClear];
+            }
         } else {
             [tile setBackgroundImage:tileImg forState:UIControlStateNormal];
             [tile setFlag:NO];
@@ -120,8 +123,33 @@ const int margin = 10;
 
 #pragma mark - game end
 
+- (void)checkClear {
+    
+    int count = 0;
+    
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i];
+        if (tile != nil) {
+            if ([tile getMine] == YES && [tile getFlag] == YES) {
+                count++;
+            }
+        }
+    }
+    
+    if (count == mineNum) {
+        [self gameClear];
+    }
+}
+
 - (void)gameClear {
     mineLabel.text = @"ゲームクリア！";
+    
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i];
+        if (tile != nil) {
+            tile.userInteractionEnabled = NO;
+        }
+    }
 }
 
 - (void)gameOver {
