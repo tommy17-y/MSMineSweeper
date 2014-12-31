@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSAppDelegate.h"
 #import "MSTile.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -35,11 +36,15 @@
     UIImage *nothingImg;
     
     IBOutlet UIView *base;
+    IBOutlet UIView *subview;
     
     IBOutlet UILabel *mineLabel;
     
     IBOutlet UIButton *mineModeButton;
     IBOutlet UIButton *flagModeButton;
+    IBOutlet UIButton *toTitleButton;
+    
+    MSAppDelegate *appdelegata;
     
 }
 

@@ -21,9 +21,11 @@ const int margin = 10;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    widthNum = 5;
-    heightNum = 5;
-    mineNum = 5;
+    appdelegata = (MSAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+    widthNum = appdelegata.widthNum;
+    heightNum = appdelegata.heightNum;
+    mineNum = appdelegata.mineNum;
     leftMineNum = mineNum;
     openedTileNum = 0;
     
@@ -161,11 +163,37 @@ const int margin = 10;
 #pragma mark - initialize
 
 - (void)viewWillAppear:(BOOL)animated {
-    width = (self.view.frame.size.width - margin * 2) / widthNum;
-    height = width;
+    width = (self.view.frame.size.width
+             - margin * 2) / widthNum;
+    height = (self.view.frame.size.height
+              - 20 /* ステータスバーの分*/
+              - subview.frame.size.height
+              - toTitleButton.frame.size.height
+              - margin * 4) / heightNum;
+    
+    if (width < height) {
+        height = width;
+    } else {
+        width = height;
+    }
+    
+    subview.center = CGPointMake(self.view.center.x, 20 + margin + subview.frame.size.height / 2);
+    toTitleButton.center = CGPointMake(self.view.center.x,
+                                       self.view.frame.size.height - margin - toTitleButton.frame.size.height / 2);
 
     base.frame = CGRectMake(0, 0, width * widthNum, height * heightNum);
     base.center = self.view.center;
+    if (subview.frame.origin.y + subview.frame.size.height + margin > base.frame.origin.y) {
+        base.frame = CGRectMake(base.frame.origin.x,
+                                subview.frame.origin.y + subview.frame.size.height + margin,
+                                base.frame.size.width,
+                                base.frame.size.height);
+    } else {
+        subview.frame = CGRectMake(subview.frame.origin.x,
+                                   base.frame.origin.y - subview.frame.size.height - margin,
+                                   subview.frame.size.width,
+                                   subview.frame.size.height);
+    }
     base.backgroundColor = [UIColor lightGrayColor];
 
     [self setTile];

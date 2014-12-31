@@ -28,6 +28,7 @@
 		B6C17F351A528F4D00357C80 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F341A528F4D00357C80 /* appicon.png */; };
 		B6C17F3A1A52957700357C80 /* MSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F391A52957700357C80 /* MSTile.m */; };
 		B6C17F3C1A52BA7200357C80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */; };
+		B6C17F3F1A52C7F800357C80 /* MSSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F3E1A52C7F800357C80 /* MSSelectedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		B6C17F381A52957700357C80 /* MSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTile.h; sourceTree = "<group>"; };
 		B6C17F391A52957700357C80 /* MSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTile.m; sourceTree = "<group>"; };
 		B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B6C17F3D1A52C7F800357C80 /* MSSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSelectedViewController.h; sourceTree = "<group>"; };
+		B6C17F3E1A52C7F800357C80 /* MSSelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSSelectedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				B6C17F081A528CE100357C80 /* Main.storyboard */,
 				B6C17F0B1A528CE100357C80 /* MSViewController.h */,
 				B6C17F0C1A528CE100357C80 /* MSViewController.m */,
+				B6C17F3D1A52C7F800357C80 /* MSSelectedViewController.h */,
+				B6C17F3E1A52C7F800357C80 /* MSSelectedViewController.m */,
 				B6C17F381A52957700357C80 /* MSTile.h */,
 				B6C17F391A52957700357C80 /* MSTile.m */,
 				B6C17F0E1A528CE100357C80 /* Images.xcassets */,
@@ -288,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C17F071A528CE100357C80 /* MSAppDelegate.m in Sources */,
+				B6C17F3F1A52C7F800357C80 /* MSSelectedViewController.m in Sources */,
 				B6C17F3A1A52957700357C80 /* MSTile.m in Sources */,
 				B6C17F0D1A528CE100357C80 /* MSViewController.m in Sources */,
 				B6C17F031A528CE100357C80 /* main.m in Sources */,
