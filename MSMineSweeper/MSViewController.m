@@ -41,6 +41,9 @@ const int margin = 10;
     flagModeButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     flagModeButton.layer.cornerRadius = 10.0f;
     
+    forAutoOpenArray =  [NSMutableArray array];
+    [forAutoOpenArray removeAllObjects];
+    
     [self createTile];
     
 }
@@ -106,6 +109,9 @@ const int margin = 10;
     if ([tile getSurroundingMineNum] != 0){
         [tile setTitle:[NSString stringWithFormat:@"%d", [tile getSurroundingMineNum]]
               forState:UIControlStateNormal];
+    } else {
+        [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+        [self autoOpenTile];
     }
 }
 
@@ -121,6 +127,124 @@ const int margin = 10;
         }
     }
 
+}
+
+- (void)autoOpenTile {
+    MSTile *tile;
+    NSMutableArray *array =  [NSMutableArray array];
+    array = forAutoOpenArray.mutableCopy;
+    [forAutoOpenArray removeAllObjects];
+    
+    for (int i = 0; i < [array count]; i++) {
+        
+        int openedTileTag = (int)[array[i] integerValue];
+        
+        // 最上段以外
+        if (openedTileTag > widthNum) {
+            tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum];
+            if (tile != nil) {
+                if ([tile getOpen] == NO && [tile getFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                    [tile setOpen:YES];
+                    [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                }
+            }
+            
+            if (openedTileTag % widthNum != 0) {
+                tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum + 1];
+                if (tile != nil) {
+                    if ([tile getOpen] == NO && [tile getFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                        [tile setOpen:YES];
+                        [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                    }
+                }
+            }
+            
+            if (openedTileTag % widthNum != 1) {
+                tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum - 1];
+                if (tile != nil) {
+                    if ([tile getOpen] == NO && [tile getFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                        [tile setOpen:YES];
+                        [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                    }
+                }
+            }
+        }
+        
+        // 最下段以外
+        if (openedTileTag <= (widthNum * (heightNum - 1))) {
+            tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum];
+            if (tile != nil) {
+                if ([tile getOpen] == NO && [tile getFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                    [tile setOpen:YES];
+                    [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                }
+            }
+            
+            if (openedTileTag % widthNum != 0) {
+                tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum + 1];
+                if (tile != nil) {
+                    if ([tile getOpen] == NO && [tile getFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                        [tile setOpen:YES];
+                        [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                    }
+                }
+            }
+            
+            if (openedTileTag % widthNum != 1) {
+                tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum - 1];
+                if (tile != nil) {
+                    if ([tile getOpen] == NO && [tile getFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                        [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                        [tile setOpen:YES];
+                        [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                    }
+                }
+            }
+            
+        }
+        
+        // 最右以外
+        if (openedTileTag % widthNum != 0) {
+            tile = (MSTile*)[base viewWithTag:openedTileTag + 1];
+            if (tile != nil) {
+                if ([tile getOpen] == NO && [tile getFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                    [tile setOpen:YES];
+                    [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                }
+            }
+        }
+        
+        // 最左以外
+        if (openedTileTag % widthNum != 1) {
+            tile = (MSTile*)[base viewWithTag:openedTileTag - 1];
+            if (tile != nil) {
+                if ([tile getOpen] == NO && [tile getFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
+                    [tile setOpen:YES];
+                    [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
+                }
+            }
+        }
+    }
+    
+    if ([forAutoOpenArray count] != 0) {
+        [self autoOpenTile];
+    }
+    
 }
 
 #pragma mark - game end

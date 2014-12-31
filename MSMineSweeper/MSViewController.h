@@ -46,6 +46,8 @@
     
     MSAppDelegate *appdelegata;
     
+    NSMutableArray *forAutoOpenArray;
+    
 }
 
 - (IBAction)tappedMineModeButton;
