@@ -58,9 +58,7 @@ const int margin = 10;
             [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
             openedTileNum++;
             
-            if (openedTileNum == widthNum * heightNum - mineNum) {
-                [self gameClear];
-            } else {
+            if ([self checkClear] == NO) {
                 [self displayMineNum:(int)tile.tag];
             }
             
@@ -243,13 +241,52 @@ const int margin = 10;
     
     if ([forAutoOpenArray count] != 0) {
         [self autoOpenTile];
+    } else {
+        [self countOpenedTileNum];
     }
     
 }
 
+- (void)countOpenedTileNum {
+    int count = 0;
+    
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i];
+        if (tile != nil) {
+            if ([tile getOpen] == YES) {
+                count++;
+            }
+        }
+    }
+    
+    openedTileNum = count;
+    
+    [self checkClear];
+}
+
 #pragma mark - game end
 
-- (void)checkClear {
+- (BOOL)checkClear {
+    
+    if ([self checkClear1] == YES || [self checkClear3] == YES || [self checkClear3] == YES) {
+        [self gameClear];
+        return YES;
+    }
+    return NO;
+
+}
+
+// 地雷以外を全て開けた
+- (BOOL)checkClear1 {
+    
+    if (openedTileNum == widthNum * heightNum - mineNum) {
+        return YES;
+    }
+    return NO;
+}
+
+// フラグをすべて正しく立てた
+- (BOOL)checkClear2 {
     
     int count = 0;
     
@@ -263,8 +300,30 @@ const int margin = 10;
     }
     
     if (count == mineNum) {
-        [self gameClear];
+        return YES;
     }
+    return NO;
+}
+
+// フラグマスと開けてないマスの位置が全て地雷マス
+
+- (BOOL)checkClear3 {
+    
+    int count = 0;
+    
+    for (int i = 1; i <= widthNum * heightNum; i++) {
+        MSTile *tile = (MSTile*)[base viewWithTag:i];
+        if (tile != nil) {
+            if ([tile getMine] == YES && [tile getFlag] == YES) {
+                count++;
+            }
+        }
+    }
+    
+    if ((widthNum * heightNum - openedTileNum) + count == mineNum) {
+        return YES;
+    }
+    return NO;
 }
 
 - (void)gameClear {
