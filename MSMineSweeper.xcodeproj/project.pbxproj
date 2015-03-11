@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B65E51341AB034500088238C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B65E51331AB034500088238C /* Images.xcassets */; };
 		B6C17EF71A528CE100357C80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EF61A528CE100357C80 /* Foundation.framework */; };
 		B6C17EF91A528CE100357C80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EF81A528CE100357C80 /* CoreGraphics.framework */; };
 		B6C17EFB1A528CE100357C80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EFA1A528CE100357C80 /* UIKit.framework */; };
@@ -15,7 +16,6 @@
 		B6C17F071A528CE100357C80 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F061A528CE100357C80 /* MSAppDelegate.m */; };
 		B6C17F0A1A528CE100357C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F081A528CE100357C80 /* Main.storyboard */; };
 		B6C17F0D1A528CE100357C80 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F0C1A528CE100357C80 /* MSViewController.m */; };
-		B6C17F0F1A528CE100357C80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F0E1A528CE100357C80 /* Images.xcassets */; };
 		B6C17F161A528CE200357C80 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17F151A528CE200357C80 /* XCTest.framework */; };
 		B6C17F171A528CE200357C80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EF61A528CE100357C80 /* Foundation.framework */; };
 		B6C17F181A528CE200357C80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EFA1A528CE100357C80 /* UIKit.framework */; };
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B65E51331AB034500088238C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6C17EF31A528CE100357C80 /* MSMineSweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSMineSweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C17EF61A528CE100357C80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6C17EF81A528CE100357C80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,7 +51,6 @@
 		B6C17F091A528CE100357C80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6C17F0B1A528CE100357C80 /* MSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
 		B6C17F0C1A528CE100357C80 /* MSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
-		B6C17F0E1A528CE100357C80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6C17F141A528CE100357C80 /* MSMineSweeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSMineSweeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C17F151A528CE200357C80 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B6C17F1D1A528CE200357C80 /* MSMineSweeperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSMineSweeperTests-Info.plist"; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				B6C17F3E1A52C7F800357C80 /* MSSelectedViewController.m */,
 				B6C17F381A52957700357C80 /* MSTile.h */,
 				B6C17F391A52957700357C80 /* MSTile.m */,
-				B6C17F0E1A528CE100357C80 /* Images.xcassets */,
+				B65E51331AB034500088238C /* Images.xcassets */,
 				B6C17EFD1A528CE100357C80 /* Supporting Files */,
 			);
 			path = MSMineSweeper;
@@ -243,7 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C17F0F1A528CE100357C80 /* Images.xcassets in Resources */,
+				B65E51341AB034500088238C /* Images.xcassets in Resources */,
 				B6C17F011A528CE100357C80 /* InfoPlist.strings in Resources */,
 				B6C17F0A1A528CE100357C80 /* Main.storyboard in Resources */,
 			);

@@ -44,15 +44,15 @@
     surroundingMineNum = mineNum;
 }
 
-- (BOOL)getMine {
+- (BOOL)isMine {
     return mine;
 }
 
-- (BOOL)getOpen {
+- (BOOL)isOpen {
     return  open;
 }
 
-- (BOOL)getFlag {
+- (BOOL)isFlag {
     return flag;
 }
 

@@ -31,10 +31,10 @@ const int margin = 10;
     leftMineNum = mineNum;
     openedTileNum = 0;
     
-    tileImg = [UIImage imageNamed:@"masu.png"];
-    mineImg = [UIImage imageNamed:@"mine.png"];
-    flagImg = [UIImage imageNamed:@"flag.png"];
-    nothingImg = [UIImage imageNamed:@"nothing.png"];
+    tileImg = [UIImage imageNamed:@"masu"];
+    mineImg = [UIImage imageNamed:@"mine"];
+    flagImg = [UIImage imageNamed:@"flag"];
+    nothingImg = [UIImage imageNamed:@"nothing"];
     
     mineModeButton.layer.borderWidth = 2.0f;
     mineModeButton.layer.borderColor = [[UIColor redColor] CGColor];
@@ -54,9 +54,9 @@ const int margin = 10;
 
 - (void)tappedTile:(MSTile*)tile {
     
-    if (mineModeButton.layer.borderColor == [[UIColor redColor] CGColor] && [tile getFlag] == NO) {
+    if (mineModeButton.layer.borderColor == [[UIColor redColor] CGColor] && [tile isFlag] == NO) {
     
-        if ([tile getMine] == NO) {
+        if ([tile isMine] == NO) {
             [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
             openedTileNum++;
             
@@ -73,7 +73,7 @@ const int margin = 10;
         
     } else if (flagModeButton.layer.borderColor == [[UIColor redColor] CGColor]) {
         
-        if ([tile getFlag] == NO) {
+        if ([tile isFlag] == NO) {
             if (leftMineNum > 0) {
                 [tile setBackgroundImage:flagImg forState:UIControlStateNormal];
                 [tile setFlag:YES];
@@ -120,7 +120,7 @@ const int margin = 10;
     for (int i = 1; i <= widthNum * heightNum; i++) {
         MSTile *tile = (MSTile*)[base viewWithTag:i];
         if (tile != nil) {
-            if ([tile getMine] == YES) {
+            if ([tile isMine] == YES) {
                 [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
             }
             tile.userInteractionEnabled = NO;
@@ -145,8 +145,8 @@ const int margin = 10;
         if (openedTileTag > widthNum) {
             tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum];
             if (tile != nil) {
-                if ([tile getOpen] == NO && [tile getFlag] == NO
-                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                if ([tile isOpen] == NO && [tile isFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                     [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                     [tile setOpen:YES];
                     [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -156,8 +156,8 @@ const int margin = 10;
             if (openedTileTag % widthNum != 0) {
                 tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum + 1];
                 if (tile != nil) {
-                    if ([tile getOpen] == NO && [tile getFlag] == NO
-                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    if ([tile isOpen] == NO && [tile isFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                         [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                         [tile setOpen:YES];
                         [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -168,8 +168,8 @@ const int margin = 10;
             if (openedTileTag % widthNum != 1) {
                 tile = (MSTile*)[base viewWithTag:openedTileTag - widthNum - 1];
                 if (tile != nil) {
-                    if ([tile getOpen] == NO && [tile getFlag] == NO
-                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    if ([tile isOpen] == NO && [tile isFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                         [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                         [tile setOpen:YES];
                         [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -182,8 +182,8 @@ const int margin = 10;
         if (openedTileTag <= (widthNum * (heightNum - 1))) {
             tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum];
             if (tile != nil) {
-                if ([tile getOpen] == NO && [tile getFlag] == NO
-                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                if ([tile isOpen] == NO && [tile isFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                     [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                     [tile setOpen:YES];
                     [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -193,8 +193,8 @@ const int margin = 10;
             if (openedTileTag % widthNum != 0) {
                 tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum + 1];
                 if (tile != nil) {
-                    if ([tile getOpen] == NO && [tile getFlag] == NO
-                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    if ([tile isOpen] == NO && [tile isFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                         [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                         [tile setOpen:YES];
                         [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -205,8 +205,8 @@ const int margin = 10;
             if (openedTileTag % widthNum != 1) {
                 tile = (MSTile*)[base viewWithTag:openedTileTag + widthNum - 1];
                 if (tile != nil) {
-                    if ([tile getOpen] == NO && [tile getFlag] == NO
-                        && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                    if ([tile isOpen] == NO && [tile isFlag] == NO
+                        && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                         [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                         [tile setOpen:YES];
                         [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -220,8 +220,8 @@ const int margin = 10;
         if (openedTileTag % widthNum != 0) {
             tile = (MSTile*)[base viewWithTag:openedTileTag + 1];
             if (tile != nil) {
-                if ([tile getOpen] == NO && [tile getFlag] == NO
-                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                if ([tile isOpen] == NO && [tile isFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                     [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                     [tile setOpen:YES];
                     [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -233,8 +233,8 @@ const int margin = 10;
         if (openedTileTag % widthNum != 1) {
             tile = (MSTile*)[base viewWithTag:openedTileTag - 1];
             if (tile != nil) {
-                if ([tile getOpen] == NO && [tile getFlag] == NO
-                    && [tile getSurroundingMineNum]  == 0 && [tile getMine] == NO) {
+                if ([tile isOpen] == NO && [tile isFlag] == NO
+                    && [tile getSurroundingMineNum]  == 0 && [tile isMine] == NO) {
                     [tile setBackgroundImage:nothingImg forState:UIControlStateNormal];
                     [tile setOpen:YES];
                     [forAutoOpenArray addObject:[NSString stringWithFormat:@"%d", (int)tile.tag]];
@@ -257,7 +257,7 @@ const int margin = 10;
     for (int i = 1; i <= widthNum * heightNum; i++) {
         MSTile *tile = (MSTile*)[base viewWithTag:i];
         if (tile != nil) {
-            if ([tile getOpen] == YES) {
+            if ([tile isOpen] == YES) {
                 count++;
             }
         }
@@ -270,10 +270,11 @@ const int margin = 10;
 
 #pragma mark - game end
 
-// TODO: メソッド名わかりやすく
 - (BOOL)checkClear {
     
-    if ([self checkClear1] == YES || [self checkClear3] == YES || [self checkClear3] == YES) {
+    if ([self isOpenedAllTilesExceptForMine] == YES ||
+            [self isCheckedAllFlagsAtRightTiles] == YES ||
+            [self isAllMinesAtFlagTilesAndNotOpenedTiles] == YES) {
         [self gameClear];
         return YES;
     }
@@ -281,9 +282,7 @@ const int margin = 10;
 
 }
 
-// 地雷以外を全て開けた
-// TODO: メソッド名わかりやすく
-- (BOOL)checkClear1 {
+- (BOOL)isOpenedAllTilesExceptForMine {
     
     if (openedTileNum == widthNum * heightNum - mineNum) {
         return YES;
@@ -291,15 +290,14 @@ const int margin = 10;
     return NO;
 }
 
-// フラグをすべて正しく立てた
-- (BOOL)checkClear2 {
+- (BOOL)isCheckedAllFlagsAtRightTiles {
     
     int count = 0;
     
     for (int i = 1; i <= widthNum * heightNum; i++) {
         MSTile *tile = (MSTile*)[base viewWithTag:i];
         if (tile != nil) {
-            if ([tile getMine] == YES && [tile getFlag] == YES) {
+            if ([tile isMine] == YES && [tile isFlag] == YES) {
                 count++;
             }
         }
@@ -311,16 +309,14 @@ const int margin = 10;
     return NO;
 }
 
-// フラグマスと開けてないマスの位置が全て地雷マス
-// TODO: メソッド名わかりやすく
-- (BOOL)checkClear3 {
+- (BOOL)isAllMinesAtFlagTilesAndNotOpenedTiles {
     
     int count = 0;
     
     for (int i = 1; i <= widthNum * heightNum; i++) {
         MSTile *tile = (MSTile*)[base viewWithTag:i];
         if (tile != nil) {
-            if ([tile getMine] == YES && [tile getFlag] == YES) {
+            if ([tile isMine] == YES && [tile isFlag] == YES) {
                 count++;
             }
         }
@@ -424,7 +420,7 @@ const int margin = 10;
         int rand = arc4random() % (widthNum * heightNum) + 1;
         MSTile *tile = (MSTile*)[base viewWithTag:rand];
         
-        if ([tile getMine] != YES) {
+        if ([tile isMine] != YES) {
 //            [tile setBackgroundImage:mineImg forState:UIControlStateNormal];
             [tile setMine:YES];
             count++;
@@ -448,25 +444,25 @@ const int margin = 10;
         count = 0;
         tile = (MSTile*)[base viewWithTag:i];
         
-        if ([tile getMine] == NO) {
+        if ([tile isMine] == NO) {
         
             // 最上段以外
             if (i > widthNum) {
                 tile = (MSTile*)[base viewWithTag:i - widthNum];
-                if ([tile getMine] == YES) {
+                if ([tile isMine] == YES) {
                     count++;
                 }
                 
                 if (i % widthNum != 0) {
                     tile = (MSTile*)[base viewWithTag:i - widthNum + 1];
-                    if ([tile getMine] == YES) {
+                    if ([tile isMine] == YES) {
                         count++;
                     }
                 }
                 
                 if (i % widthNum != 1) {
                     tile = (MSTile*)[base viewWithTag:i - widthNum - 1];
-                    if ([tile getMine] == YES) {
+                    if ([tile isMine] == YES) {
                         count++;
                     }
                 }
@@ -475,20 +471,20 @@ const int margin = 10;
             // 最下段以外
             if (i <= (widthNum * (heightNum - 1))) {
                 tile = (MSTile*)[base viewWithTag:i + widthNum];
-                if ([tile getMine] == YES) {
+                if ([tile isMine] == YES) {
                     count++;
                 }
                 
                 if (i % widthNum != 0) {
                     tile = (MSTile*)[base viewWithTag:i + widthNum + 1];
-                    if ([tile getMine] == YES) {
+                    if ([tile isMine] == YES) {
                         count++;
                     }
                 }
                 
                 if (i % widthNum != 1) {
                     tile = (MSTile*)[base viewWithTag:i + widthNum - 1];
-                    if ([tile getMine] == YES) {
+                    if ([tile isMine] == YES) {
                         count++;
                     }
                 }
@@ -498,7 +494,7 @@ const int margin = 10;
             // 最右以外
             if (i % widthNum != 0) {
                 tile = (MSTile*)[base viewWithTag:i + 1];
-                if ([tile getMine] == YES) {
+                if ([tile isMine] == YES) {
                     count++;
                 }
             }
@@ -506,7 +502,7 @@ const int margin = 10;
             // 最左以外
             if (i % widthNum != 1) {
                 tile = (MSTile*)[base viewWithTag:i - 1];
-                if ([tile getMine] == YES) {
+                if ([tile isMine] == YES) {
                     count++;
                 }
             }
