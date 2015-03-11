@@ -14,6 +14,8 @@
 
 @implementation MSViewController
 
+
+// TODO: マジックナンバーはなくして定数定義
 const int margin = 10;
 
 - (void)viewDidLoad
@@ -127,6 +129,8 @@ const int margin = 10;
 
 }
 
+
+// TODO:リファクタリング
 - (void)autoOpenTile {
     MSTile *tile;
     NSMutableArray *array =  [NSMutableArray array];
@@ -266,6 +270,7 @@ const int margin = 10;
 
 #pragma mark - game end
 
+// TODO: メソッド名わかりやすく
 - (BOOL)checkClear {
     
     if ([self checkClear1] == YES || [self checkClear3] == YES || [self checkClear3] == YES) {
@@ -277,6 +282,7 @@ const int margin = 10;
 }
 
 // 地雷以外を全て開けた
+// TODO: メソッド名わかりやすく
 - (BOOL)checkClear1 {
     
     if (openedTileNum == widthNum * heightNum - mineNum) {
@@ -306,7 +312,7 @@ const int margin = 10;
 }
 
 // フラグマスと開けてないマスの位置が全て地雷マス
-
+// TODO: メソッド名わかりやすく
 - (BOOL)checkClear3 {
     
     int count = 0;

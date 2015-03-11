@@ -21,11 +21,6 @@
 		B6C17F181A528CE200357C80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17EFA1A528CE100357C80 /* UIKit.framework */; };
 		B6C17F201A528CE200357C80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F1E1A528CE200357C80 /* InfoPlist.strings */; };
 		B6C17F221A528CE200357C80 /* MSMineSweeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F211A528CE200357C80 /* MSMineSweeperTests.m */; };
-		B6C17F301A528D1D00357C80 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2C1A528D1D00357C80 /* flag.png */; };
-		B6C17F311A528D1D00357C80 /* nothing.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2D1A528D1D00357C80 /* nothing.png */; };
-		B6C17F321A528D1D00357C80 /* masu.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2E1A528D1D00357C80 /* masu.png */; };
-		B6C17F331A528D1D00357C80 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F2F1A528D1D00357C80 /* mine.png */; };
-		B6C17F351A528F4D00357C80 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6C17F341A528F4D00357C80 /* appicon.png */; };
 		B6C17F3A1A52957700357C80 /* MSTile.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F391A52957700357C80 /* MSTile.m */; };
 		B6C17F3C1A52BA7200357C80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */; };
 		B6C17F3F1A52C7F800357C80 /* MSSelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C17F3E1A52C7F800357C80 /* MSSelectedViewController.m */; };
@@ -61,11 +56,6 @@
 		B6C17F1D1A528CE200357C80 /* MSMineSweeperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MSMineSweeperTests-Info.plist"; sourceTree = "<group>"; };
 		B6C17F1F1A528CE200357C80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B6C17F211A528CE200357C80 /* MSMineSweeperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSMineSweeperTests.m; sourceTree = "<group>"; };
-		B6C17F2C1A528D1D00357C80 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
-		B6C17F2D1A528D1D00357C80 /* nothing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nothing.png; sourceTree = "<group>"; };
-		B6C17F2E1A528D1D00357C80 /* masu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = masu.png; sourceTree = "<group>"; };
-		B6C17F2F1A528D1D00357C80 /* mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine.png; sourceTree = "<group>"; };
-		B6C17F341A528F4D00357C80 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		B6C17F381A52957700357C80 /* MSTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTile.h; sourceTree = "<group>"; };
 		B6C17F391A52957700357C80 /* MSTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTile.m; sourceTree = "<group>"; };
 		B6C17F3B1A52BA7200357C80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -132,7 +122,6 @@
 		B6C17EFC1A528CE100357C80 /* MSMineSweeper */ = {
 			isa = PBXGroup;
 			children = (
-				B6C17F2B1A528D1000357C80 /* 素材 */,
 				B6C17F051A528CE100357C80 /* MSAppDelegate.h */,
 				B6C17F061A528CE100357C80 /* MSAppDelegate.m */,
 				B6C17F081A528CE100357C80 /* Main.storyboard */,
@@ -175,18 +164,6 @@
 				B6C17F1E1A528CE200357C80 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B6C17F2B1A528D1000357C80 /* 素材 */ = {
-			isa = PBXGroup;
-			children = (
-				B6C17F341A528F4D00357C80 /* appicon.png */,
-				B6C17F2C1A528D1D00357C80 /* flag.png */,
-				B6C17F2D1A528D1D00357C80 /* nothing.png */,
-				B6C17F2E1A528D1D00357C80 /* masu.png */,
-				B6C17F2F1A528D1D00357C80 /* mine.png */,
-			);
-			name = "素材";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,14 +243,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6C17F351A528F4D00357C80 /* appicon.png in Resources */,
 				B6C17F0F1A528CE100357C80 /* Images.xcassets in Resources */,
-				B6C17F301A528D1D00357C80 /* flag.png in Resources */,
 				B6C17F011A528CE100357C80 /* InfoPlist.strings in Resources */,
-				B6C17F311A528D1D00357C80 /* nothing.png in Resources */,
-				B6C17F331A528D1D00357C80 /* mine.png in Resources */,
 				B6C17F0A1A528CE100357C80 /* Main.storyboard in Resources */,
-				B6C17F321A528D1D00357C80 /* masu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

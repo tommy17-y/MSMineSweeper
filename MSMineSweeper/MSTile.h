@@ -24,6 +24,7 @@
 - (void)setFlag:(BOOL)x;
 - (void)setSurroundingMineNum:(int)mineNum;
 
+// TODO: BOOL返すものはis~
 - (BOOL)getMine;
 - (BOOL)getOpen;
 - (BOOL)getFlag;
